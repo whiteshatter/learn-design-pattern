@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+用户 -> 第三方平台: 发起第三方账号登录
+第三方平台 -> 服务端: 返回 code
+服务端 -> 第三方平台: 请求 Token（携带code）
+第三方平台 -> 服务端: 获取 Token
+服务端 -> 第三方平台: 请求用户信息（携带Token）
+第三方平台 -> 服务端: 获取用户信息
+第三方平台 -> 用户: 返回登陆成功
+@enduml

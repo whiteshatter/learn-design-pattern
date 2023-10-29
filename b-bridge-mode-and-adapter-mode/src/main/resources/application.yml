@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/design_pattern?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: 123
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+gitee:
+  clientId: 6544813bfb0d6cf06d333449b4f5a40b3267f191e34e1bd10a9f964156748e4c
+  clientSecret: 2aadb58abac976a548429475c22b281a9132646765c5c674246e30878a83fd5e
+  callback: http://localhost:8081/v1/user/gitee
+  state: GITEE
+  user:
+    prefix: ${gitee.state}@
+    url: https://gitee.com/api/v5/user?access_token=
+  token:
+    url: https://gitee.com/oauth/token?grant_type=authorization_code&client_id=${gitee.clientId}&client_secret=${gitee.clientSecret}&redirect_uri=${gitee.callback}&code=
